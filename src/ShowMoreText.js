@@ -33,7 +33,7 @@ class ShowMoreText extends Component {
         lines: PropTypes.number,
         more: PropTypes.node,
         less: PropTypes.node,
-        displayLess: ProptTypes.bool,
+        displayLess: PropTypes.bool,
         anchorClass: PropTypes.string,
         className: PropTypes.string,
         onClick: PropTypes.func,
@@ -93,7 +93,7 @@ class ShowMoreText extends Component {
             anchorClass,
             className,
             width,
-            keepNewLines
+            keepNewLines,
             displayLess,
             seperator
         } = this.props;
