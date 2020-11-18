@@ -19,11 +19,13 @@ class ShowMoreText extends Component {
         lines: 3,
         more: 'Show more',
         less: 'Show less',
+        displayLess: true,
         anchorClass: '',
         onClick: undefined,
         expanded: false,
         width: 0,
-        keepNewLines: false
+        keepNewLines: false,
+        seperator: '... '
     };
 
     static propTypes = {
@@ -31,12 +33,14 @@ class ShowMoreText extends Component {
         lines: PropTypes.number,
         more: PropTypes.node,
         less: PropTypes.node,
+        displayLess: ProptTypes.bool,
         anchorClass: PropTypes.string,
         className: PropTypes.string,
         onClick: PropTypes.func,
         expanded: PropTypes.bool,
         width: PropTypes.number,
-        keepNewLines: PropTypes.bool
+        keepNewLines: PropTypes.bool,
+        seperator: PropTypes.string
     };
 
     componentDidMount() {
@@ -90,6 +94,8 @@ class ShowMoreText extends Component {
             className,
             width,
             keepNewLines
+            displayLess,
+            seperator
         } = this.props;
 
         const { expanded, truncated } = this.state;
@@ -101,7 +107,7 @@ class ShowMoreText extends Component {
                     lines={!expanded && lines}
                     ellipsis={
                         <span>
-                            ...{' '}
+                            {seperator}
                             <a
                                 href=''
                                 className={anchorClass}
@@ -128,7 +134,7 @@ class ShowMoreText extends Component {
                         : children
                     }
                 </Truncate>
-                {!truncated && expanded && (
+                {displayLess && !truncated && expanded && (
                     <span>
                         {' '}
                         <a
